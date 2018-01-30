@@ -16,6 +16,9 @@ INDEX
 
 
     }
+      if(isset($_GET['logout'])) {
+        session_unregister('usuario');
+    }
 ?>
 
 
