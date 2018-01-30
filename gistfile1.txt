@@ -1,0 +1,36 @@
+INDEX
+<?php
+    session_start(); 
+    if(isset($_POST['login'])) {
+    require 'conexion.php';
+    $usuario = $_POST['usuario'];
+    $password = $_POST['password'];
+    $resultado = mysqli_query($datos_conexion, 'SELECT * FROM login WHERE usuario="'.$usuario.'" and password="'.$password.'"');
+    if(mysqli_num_rows($resultado)==1) {
+        $_SESSION['usuario'] = $usuario;
+        header("Location: mensaje_enviado.php");
+    }
+    else
+    echo 'Cuenta invalida';
+    
+
+
+    }
+?>
+
+
+mensaje_enviado
+
+<?php
+session_start();
+echo 'Bienvenido'.$_SESSION['usuario'];
+
+?>
+
+<?php
+
+$datos_conexion=mysqli_connect("localhost", "root", "", "formulario");
+
+
+?>
+
